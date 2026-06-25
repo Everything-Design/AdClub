@@ -1,0 +1,24 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="On-ink palette" subtitle="Text colours used on the warm-black surface" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--ink); font-family: var(--font-sans); }
+  .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 24px 26px; }
+  .item { }
+  .swatch { height: 36px; border-radius: 2px; border: 1px solid var(--on-ink-rule); }
+  .name { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--paper); margin-top: 10px; }
+  .hex { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; color: var(--on-ink-soft); margin-top: 3px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item"><div class="swatch" style="background:var(--on-ink)"></div><div class="name" style="color:var(--on-ink)">On-ink</div><div class="hex">#ffffff</div></div>
+    <div class="item"><div class="swatch" style="background:var(--on-ink-soft)"></div><div class="name">Soft</div><div class="hex">#d9d4c5</div></div>
+    <div class="item"><div class="swatch" style="background:var(--on-ink-faint)"></div><div class="name">Faint</div><div class="hex">#c2bcad</div></div>
+    <div class="item"><div class="swatch" style="background:var(--accent)"></div><div class="name" style="color:var(--accent)">Accent</div><div class="hex">#fe532d</div></div>
+  </div>
+</body>
+</html>

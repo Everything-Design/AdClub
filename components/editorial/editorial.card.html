@@ -1,0 +1,79 @@
+<!-- @dsCard group="Components" viewport="700x540" name="Editorial — phases, agenda, deliverables" subtitle="PhaseCard, AgendaList, DeliverCard, ClientTile" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; background: var(--paper); font-family: var(--font-sans); color: var(--ink); }
+  .wrap { padding: 28px 30px; display: flex; flex-direction: column; gap: 24px; }
+  .sect-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .phase-grid { display: grid; grid-template-columns: repeat(3,1fr); border-top: 2px dashed var(--ink); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .ink-strip { background: var(--ink); border-radius: 2px; padding: 22px; }
+</style>
+</head>
+<body>
+<div id="root" class="wrap"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+
+<script type="text/babel">
+  const NS = window.Proposal_f8fc29;
+  const { PhaseCard, AgendaList, DeliverCard, ClientTile } = NS;
+
+  function Demo() {
+    return (
+      <React.Fragment>
+        <div>
+          <div className="sect-label">PhaseCard · timeline</div>
+          <div className="phase-grid">
+            <PhaseCard num="Phase 01" when="Day 1 · 2 hrs" title="Briefing">A working session with leadership.</PhaseCard>
+            <PhaseCard num="Phase 02" when="Days 2–5 · async" title="Study">Four days inside the category.</PhaseCard>
+            <PhaseCard num="Phase 04" when="Day 9 · delivered" title="Proposal" final>Scoped, decision-ready.</PhaseCard>
+          </div>
+        </div>
+
+        <div className="grid2">
+          <div>
+            <div className="sect-label">AgendaList</div>
+            <AgendaList
+              heading="The two hours, roughly"
+              items={[
+                { n: "01", title: "The business today", sub: "Twenty years of SAP delivery." },
+                { n: "02", title: "The next three years", sub: "Repositioning for the IPO." },
+                { n: "03", title: "Audiences & perception", sub: "Investors first, then the rest." },
+              ]}
+            />
+          </div>
+          <div>
+            <div className="sect-label">DeliverCard</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              <DeliverCard label="You walk away with" value="A shared written brief">Circulated within 48 hours.</DeliverCard>
+              <DeliverCard label="We walk away with" value="A list to read">Decks, white papers, case studies.</DeliverCard>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div className="sect-label">ClientTile · on ink</div>
+          <div className="ink-strip">
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "14px 18px" }}>
+              <ClientTile src="../../assets/clients/client-bayer.svg" alt="Bayer" category="Pharma" />
+              <ClientTile src="../../assets/clients/client-fractal.svg" alt="Fractal" category="AI" />
+              <ClientTile src="../../assets/clients/client-razorpay.svg" alt="Razorpay" category="Fintech" />
+              <ClientTile src="../../assets/clients/client-tcs-vec.png" alt="TCS" category="IT services" fit="cover" />
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script>
+</body>
+</html>

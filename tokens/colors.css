@@ -1,0 +1,49 @@
+/* ============================================================
+   Everything Design — Color tokens
+   Monochrome warm-black + paper/cream, ONE orange accent,
+   a yellow strike used sparingly. No other hues.
+   ============================================================ */
+
+:root {
+  /* --- Base palette --- */
+  --paper:      #ffffff;   /* primary page / surface */
+  --paper-2:    #f3f1ec;   /* cream — recessed cards, fills */
+  --ink:        #0e0d0c;   /* warm black — text, dark surfaces */
+  --ink-2:      #2a2723;   /* softened ink — body copy */
+  --muted:      #6a655c;   /* warm grey — captions, labels */
+
+  /* Hairline rules (ink at low alpha) */
+  --rule:       #0e0d0c14; /*  ~8%  — faint dividers */
+  --rule-2:     #0e0d0c33; /* ~20%  — dotted component dividers */
+
+  /* Accents */
+  --accent:     #fe532d;   /* signature orange — the single hue */
+  --accent-press: #c93a17; /* pressed / hover-dark orange */
+  --accent-2:   #f5a623;   /* yellow strike — at most once per page */
+
+  /* On-dark (ink surface) helpers */
+  --on-ink:        #ffffff; /* text on ink */
+  --on-ink-soft:   #d9d4c5; /* secondary text on ink */
+  --on-ink-faint:  #c2bcad; /* tertiary text on ink */
+  --on-ink-rule:   #ffffff1e; /* hairline on ink */
+
+  /* --- Semantic aliases --- */
+  --bg-page:        var(--paper);
+  --bg-sunken:      var(--paper-2);
+  --bg-inverse:     var(--ink);
+  --surface-card:   var(--paper);
+  --surface-fill:   var(--paper-2);
+
+  --text-heading:   var(--ink);
+  --text-body:      var(--ink-2);
+  --text-muted:     var(--muted);
+  --text-accent:    var(--accent);
+  --text-on-ink:    var(--on-ink);
+
+  --border-strong:  var(--ink);     /* card outlines, section dividers */
+  --border-hair:    var(--rule);    /* faint */
+  --border-dotted:  var(--rule-2);  /* component dividers */
+
+  --link:           var(--accent);
+  --highlight:      var(--accent-2);
+}

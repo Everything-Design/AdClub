@@ -1,0 +1,47 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Surfaces — dark panel" subtitle="DarkPanel: the warm-black feature block" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; background: var(--paper); font-family: var(--font-sans); color: var(--ink); }
+  .wrap { padding: 28px 30px; display: flex; flex-direction: column; gap: 18px; }
+  .sect-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+</style>
+</head>
+<body>
+<div id="root" class="wrap"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+
+<script type="text/babel">
+  const NS = window.Proposal_f8fc29;
+  const { DarkPanel, MetaPair, Button } = NS;
+
+  function Demo() {
+    return (
+      <React.Fragment>
+        <div>
+          <div className="sect-label">DarkPanel · sign-off card</div>
+          <DarkPanel label="The commitment" title="Nine working days, then a decision.">
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: 13, lineHeight: 1.5, color: "var(--on-ink-soft)", margin: 0 }}>
+              A two-week sprint, senior-led, fixed fee. The same people in the room on Day 1 write the proposal on Day 9.
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 18, paddingTop: 14, borderTop: "1px solid var(--on-ink-rule)" }}>
+              <MetaPair tone="ink" label="Discovery fee" value="₹3.2L" sub="fixed, one-time" />
+              <MetaPair tone="ink" label="Timeline" value="2 weeks" sub="9 working days" />
+            </div>
+          </DarkPanel>
+        </div>
+      </React.Fragment>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script>
+</body>
+</html>

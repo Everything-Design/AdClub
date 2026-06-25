@@ -1,0 +1,25 @@
+<!-- @dsCard group="Spacing" viewport="700x170" name="Radii" subtitle="Deliberately hard corners — 2px / 3px / pill" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--paper); font-family: var(--font-mono); }
+  .wrap { padding: 26px 28px; display: flex; gap: 22px; align-items: flex-start; }
+  .item { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  .box { width: 96px; height: 64px; background: var(--paper-2); border: 1px solid var(--ink); }
+  .pill { width: 110px; height: 38px; background: var(--ink); border-radius: 999px; }
+  .name { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
+  .v { font-size: 9px; letter-spacing: 0.06em; color: var(--muted); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="item"><div class="box" style="border-radius:2px"></div><div class="name">Card</div><div class="v">2px · --radius-card</div></div>
+    <div class="item"><div class="box" style="border-radius:3px"></div><div class="name">Tile</div><div class="v">3px · --radius-tile</div></div>
+    <div class="item"><div class="pill"></div><div class="name">Pill</div><div class="v">999px · --radius-pill</div></div>
+    <div class="item"><div class="box" style="border-radius:0"></div><div class="name">None</div><div class="v">0 · hard edge</div></div>
+  </div>
+</body>
+</html>

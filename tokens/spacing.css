@@ -1,0 +1,46 @@
+/* ============================================================
+   Everything Design — Spacing, radii, borders, layout
+   Print-led editorial system. Inch-based page geometry,
+   px-based component spacing. Hard corners, hairline rules.
+   ============================================================ */
+
+:root {
+  /* --- Spacing scale (px) --- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* --- Radii --- (deliberately small; no soft 12-16px corners) */
+  --radius-card:   2px;   /* cards, bands, deliverables */
+  --radius-tile:   3px;   /* client / logo tiles */
+  --radius-pill:   999px; /* stamps, status pills, buttons */
+  --radius-none:   0;
+
+  /* --- Borders --- */
+  --border-w:        1px;
+  --border-w-thick:  2px;
+  --border-solid:    1px solid var(--ink);          /* card outline */
+  --border-dashed:   1px dashed var(--ink);          /* section opener */
+  --border-dotted:   1px dotted var(--rule-2);       /* component divider */
+  --border-dashed-thick: 2px dashed var(--ink);      /* phase grid top */
+
+  /* --- Page geometry (US Letter editorial) --- */
+  --page-w:  8.5in; /* @kind spacing */
+  --page-h:  11in;  /* @kind spacing */
+  --page-pad-x: 0.7in;
+  --page-pad-y: 0.55in;
+  --page-chrome-inset: 0.4in;
+
+  /* --- The one shadow we allow: the page sheet lifting off canvas --- */
+  --shadow-sheet: 0 24px 60px -20px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.2);
+
+  /* --- Canvas behind sheets --- */
+  --canvas: #1d1b18;
+}

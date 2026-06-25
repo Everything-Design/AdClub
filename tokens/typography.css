@@ -1,0 +1,59 @@
+/* ============================================================
+   Everything Design — Typography tokens
+   Petrona (display) · Open Sans (body) · Geist Mono (labels).
+   No italics anywhere — emphasis is by color, never slant.
+   ============================================================ */
+
+:root {
+  /* --- Families --- */
+  --font-display: "Petrona", "Newsreader", Georgia, "Times New Roman", serif;
+  --font-sans:    "Open Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-mono:    "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* --- Weights --- */
+  --fw-regular:   400; /* @kind font */
+  --fw-medium:    500; /* @kind font */
+  --fw-semibold:  600; /* @kind font */
+  --fw-bold:      700; /* @kind font */
+  --fw-black:     800; /* @kind font */
+
+  /* --- Display scale (Petrona) --- */
+  --type-mega:    124px;  /* cover hero */
+  --type-display: 62px;   /* page openers */
+  --type-h1:      54px;
+  --type-h2:      42px;
+  --type-h3:      30px;
+  --type-h4:      24px;
+  --type-h5:      17px;
+
+  /* --- Body scale (Open Sans) --- */
+  --type-lead:    21px;   /* cover sub / intro */
+  --type-body-lg: 16px;
+  --type-body:    14.5px;
+  --type-body-sm: 13px;
+  --type-caption: 11.5px;
+
+  /* --- Mono scale (Geist Mono, uppercase labels) --- */
+  --type-eyebrow: 10.5px;
+  --type-label:   10px;
+  --type-micro:   9px;
+
+  /* --- Tracking --- */
+  --track-tight:   -0.045em;  /* mega display */
+  --track-display: -0.035em;
+  --track-snug:    -0.02em;
+  --track-normal:  -0.005em;
+  --track-eyebrow:  0.16em;   /* mono eyebrows */
+  --track-label:    0.14em;   /* mono labels */
+
+  /* --- Line heights --- */
+  --leading-mega:  0.88;
+  --leading-tight: 0.96;
+  --leading-snug:  1.1;
+  --leading-body:  1.5;
+
+  /* --- Semantic aliases --- */
+  --text-display-font: var(--font-display);
+  --text-body-font:    var(--font-sans);
+  --text-label-font:   var(--font-mono);
+}

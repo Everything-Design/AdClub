@@ -1,0 +1,25 @@
+<!-- @dsCard group="Spacing" viewport="700x180" name="Spacing scale" subtitle="4-based px rhythm for component spacing" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--paper); font-family: var(--font-mono); }
+  .wrap { padding: 24px 28px; display: flex; align-items: flex-end; gap: 18px; }
+  .col { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .bar { background: var(--accent); border-radius: 1px; width: 100%; }
+  .t { font-size: 9px; letter-spacing: 0.08em; color: var(--muted); }
+  .v { font-size: 10px; letter-spacing: 0.06em; color: var(--ink); }
+</style>
+</head>
+<body>
+  <div class="wrap" id="w"></div>
+  <script>
+    const steps = [[1,4],[2,8],[3,12],[4,16],[5,20],[6,24],[8,32],[10,40],[12,48]];
+    document.getElementById('w').innerHTML = steps.map(([n,px]) =>
+      `<div class="col"><div class="bar" style="height:${px}px"></div><div class="v">${px}</div><div class="t">--space-${n}</div></div>`
+    ).join('');
+  </script>
+</body>
+</html>

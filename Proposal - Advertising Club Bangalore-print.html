@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposal · The Advertising Club Bangalore × Everything Design</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--canvas);
+    font-family: var(--font-sans);
+    color: var(--ink-2);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .doc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 44px 20px 64px;
+  }
+
+  /* --- The US Letter sheet --- */
+  .sheet {
+    width: 8.5in;
+    height: 11in;
+    background: var(--paper);
+    box-shadow: var(--shadow-sheet);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* chrome inset frame */
+    padding: var(--page-chrome-inset);
+  }
+
+  .frame {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  /* --- Page chrome (header + footer) --- */
+  .chrome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .chrome-left { display: flex; align-items: center; gap: 9px; }
+  .chrome-mark { width: 13px; height: 13px; display: block; }
+  .chrome strong { color: var(--ink); font-weight: 500; }
+
+  .rule-hair   { border: 0; border-top: 1px solid var(--rule); margin: 0; height: 0; width: 100%; }
+  .rule-dashed { border: 0; border-top: 1px dashed var(--ink); margin: 0; height: 0; width: 100%; }
+  .rule-dotted { border: 0; border-top: 1px dotted var(--rule-2); margin: 0; height: 0; width: 100%; }
+
+  .head-rule { margin-top: 12px; }
+  .foot-rule { margin-bottom: 11px; }
+
+  /* --- Content region (between header & footer) --- */
+  .content {
+    flex: 1;
+    min-height: 0;
+    padding: 0 0.18in;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* --- Type primitives --- */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .eyebrow.muted { color: var(--muted); }
+
+  .h-display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--type-display);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--track-display);
+    color: var(--ink);
+    margin: 0;
+  }
+  .h-section {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .lead {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--type-lead);
+    line-height: 1.42;
+    letter-spacing: -0.01em;
+    color: var(--ink-2);
+    margin: 0;
+  }
+  .body {
+    font-family: var(--font-sans);
+    font-size: var(--type-body);
+    line-height: var(--leading-body);
+    color: var(--ink-2);
+    margin: 0;
+  }
+  .body-lg {
+    font-family: var(--font-sans);
+    font-size: var(--type-body-lg);
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0;
+  }
+  .muted { color: var(--muted); }
+  .accent { color: var(--accent); }
+
+  /* meta label/value */
+  .meta-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .meta-value {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14.5px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .meta-sub {
+    display: block;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+
+  /* pill */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 7px 13px 6px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+  .strike {
+    background: linear-gradient(transparent 62%, var(--accent-2) 62%, var(--accent-2) 90%, transparent 90%);
+    padding: 0 2px;
+  }
+
+  /* --- Cover --- */
+  .cover-content { justify-content: space-between; }
+  .cover-lockup { display: flex; align-items: center; gap: 18px; }
+  .cover-lockup img { height: 30px; display: block; }
+  .cover-x {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  .cover-client {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .cover-acb { height: 104px; width: auto; display: block; }
+  .cover-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 92px;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .cover-sub {
+    max-width: 5.1in;
+    margin-top: 26px;
+  }
+  .cover-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    padding-top: 18px;
+    padding-bottom: 10px;
+  }
+  .cover-strip .meta-value { line-height: 1.3; }
+  .cover-strip .meta-sub { margin-top: 6px; }
+
+  /* --- Context grid (page 2) --- */
+  .ctx-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 2px dashed var(--ink);
+  }
+  .ctx-cell {
+    padding: 22px 20px 4px 0;
+  }
+  .ctx-cell:last-child { padding-right: 0; }
+  .ctx-cell .meta-value { font-size: 16px; line-height: 1.3; }
+  .ctx-grid .meta-sub { margin-top: 6px; }
+
+  /* --- Scope blocks (page 3) --- */
+  .scope-block {
+    display: grid;
+    grid-template-columns: 0.9fr 1.6fr;
+    gap: 34px;
+    padding: 26px 0;
+  }
+  .scope-num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 56px;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+  }
+  .scope-num .dot-sep { color: var(--accent); }
+  .scope-kicker {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+  .scope-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0 0 12px;
+  }
+  .deliver-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 14px;
+  }
+
+  /* --- Inventory tables (page 4) --- */
+  .tbl-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--ink);
+    margin-bottom: 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .tbl-label .count { color: var(--muted); }
+  .inv-row {
+    display: grid;
+    gap: 14px;
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--rule-2);
+    align-items: baseline;
+  }
+  .inv-row.pages { grid-template-columns: 1.45in 1fr; }
+  .inv-row.flows { grid-template-columns: 1.45in 1fr 0.4in; }
+  .inv-head {
+    font-family: var(--font-mono);
+    font-size: 8.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 6px 0;
+  }
+  .inv-name {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+  .inv-detail {
+    font-family: var(--font-sans);
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: var(--ink-2);
+  }
+  .inv-detail .state { color: var(--muted); }
+  .inv-count {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink);
+    text-align: right;
+  }
+
+  /* --- Exclusions list (page 5) --- */
+  .excl-list { list-style: none; margin: 0; padding: 0; }
+  .excl-list li {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 16px;
+    align-items: baseline;
+    padding: 18px 0;
+    border-bottom: 1px dashed var(--ink);
+  }
+  .excl-list li:first-child { border-top: 1px dashed var(--ink); }
+  .excl-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    padding-top: 5px;
+  }
+  .excl-text {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .excl-note {
+    margin-top: 22px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  /* --- Investment (page 6) --- */
+  .sign-card {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: var(--radius-card);
+    padding: 28px 30px 26px;
+  }
+  .sign-row { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .sign-kicker {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .sign-value {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--paper);
+  }
+  .sign-value.sm { font-size: 30px; }
+  .sign-sub {
+    font-family: var(--font-sans);
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: var(--on-ink-soft);
+    margin-top: 10px;
+  }
+  .sign-note {
+    font-family: var(--font-sans);
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--on-ink-faint);
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid var(--on-ink-rule);
+  }
+
+  .signature-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 26px;
+  }
+  .sig-cell { padding-top: 44px; }
+  .sig-line {
+    border-top: 1px dashed var(--ink);
+    padding-top: 8px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* clients strip */
+  .clients-band {
+    background: var(--ink);
+    border-radius: var(--radius-card);
+    padding: 18px 22px 20px;
+    margin-top: 22px;
+  }
+  .clients-band .eyebrow { color: var(--accent); }
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .client-tile {
+    background: #fff;
+    border-radius: var(--radius-tile);
+    aspect-ratio: 175 / 58;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+  }
+  .client-tile img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+
+  .contact-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding-top: 18px;
+    padding-bottom: 16px;
+    margin-top: 18px;
+    border-top: 1px dashed var(--ink);
+  }
+
+  @page { size: letter; margin: 0; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  @media print {
+    body { background: #fff; }
+    .doc { gap: 0; padding: 0; }
+    .sheet { box-shadow: none; page-break-after: always; break-after: page; }
+    .sheet:last-child { page-break-after: auto; break-after: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- ============================================================ PAGE 1 — COVER ============================================================ -->
+  <section class="sheet" data-screen-label="01 Cover">
+    <div class="frame">
+      <header class="chrome">
+        <div class="chrome-left">
+          <span>The Advertising Club Bangalore <strong>×</strong> Everything Design · Proposal</span>
+        </div>
+        <div class="chrome-right">01 / 06</div>
+      </header>
+      <hr class="rule-hair head-rule">
+
+      <div class="content cover-content">
+        <div style="padding-top: 30px;">
+          <div class="cover-lockup">
+            <img src="assets/logos/ed-logo.webp" alt="Everything Design">
+            <span class="cover-x">×</span>
+            <img class="cover-acb" src="assets/logos/acb-logo.png" alt="The Advertising Club Bangalore">
+          </div>
+        </div>
+
+        <div>
+          <span class="pill" style="margin-bottom: 26px;">25 Jun 2026</span>
+          <h1 class="cover-title">Website Redesign<br>Proposal</h1>
+          <p class="lead cover-sub">A design-only engagement to reimagine the Advertising Club Bangalore's digital presence. Every page, every flow, every member interaction.</p>
+        </div>
+
+        <div class="cover-strip">
+          <div>
+            <div class="meta-label">For</div>
+            <div class="meta-value">The Advertising Club Bangalore<span class="meta-sub">Industry Association</span></div>
+          </div>
+          <div>
+            <div class="meta-label">From</div>
+            <div class="meta-value">Everything Design<span class="meta-sub">Strategy &amp; Brand, Website</span></div>
+          </div>
+          <div>
+            <div class="meta-label">Scope</div>
+            <div class="meta-value">Website Design Only<span class="meta-sub">No development</span></div>
+          </div>
+          <div>
+            <div class="meta-label">Date</div>
+            <div class="meta-value">25 Jun 2026<span class="meta-sub">Proposal date</span></div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="rule-hair foot-rule">
+      <footer class="chrome">
+        <span>everything design</span>
+        <span>Website Redesign Proposal</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ============================================================ PAGE 2 — PROJECT OVERVIEW ============================================================ -->
+  <section class="sheet" data-screen-label="02 Project Overview">
+    <div class="frame">
+      <header class="chrome">
+        <div class="chrome-left">
+          <span>The Advertising Club Bangalore <strong>×</strong> Everything Design · Proposal</span>
+        </div>
+        <div class="chrome-right">02 / 06</div>
+      </header>
+      <hr class="rule-hair head-rule">
+
+      <div class="content">
+        <div class="eyebrow" style="margin-top: 30px;">Context</div>
+        <h2 class="h-section" style="margin-top: 18px;">Project Overview</h2>
+
+        <div style="max-width: 6.0in; margin-top: 26px; display: flex; flex-direction: column; gap: 16px;">
+          <p class="body-lg">The Advertising Club Bangalore is one of India's most respected advertising industry bodies. The current website doesn't reflect the quality of the community behind it, or the calibre of events it runs.</p>
+          <p class="body-lg">This engagement is a full redesign. Every page, every flow, every member state, reimagined from the ground up. Design only, no development. We design it, you build it.</p>
+          <p class="body-lg">The goal is simple. A website that earns the trust of members, students, and the wider industry, the moment they land on it.</p>
+        </div>
+
+        <div style="flex: 1;"></div>
+
+        <div class="ctx-grid">
+          <div class="ctx-cell">
+            <div class="meta-label">Client</div>
+            <div class="meta-value">The Advertising Club Bangalore<span class="meta-sub">Industry Association</span></div>
+          </div>
+          <div class="ctx-cell">
+            <div class="meta-label">Scope</div>
+            <div class="meta-value">Website Design Only<span class="meta-sub">No development</span></div>
+          </div>
+          <div class="ctx-cell">
+            <div class="meta-label">Timeline</div>
+            <div class="meta-value">4–5 Weeks<span class="meta-sub">From project kickoff</span></div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="rule-hair foot-rule">
+      <footer class="chrome">
+        <span>everything design</span>
+        <span>Project Overview</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ============================================================ PAGE 3 — SCOPE OF WORK ============================================================ -->
+  <section class="sheet" data-screen-label="03 Scope of Work">
+    <div class="frame">
+      <header class="chrome">
+        <div class="chrome-left">
+          <span>The Advertising Club Bangalore <strong>×</strong> Everything Design · Proposal</span>
+        </div>
+        <div class="chrome-right">03 / 06</div>
+      </header>
+      <hr class="rule-hair head-rule">
+
+      <div class="content">
+        <div class="eyebrow" style="margin-top: 30px;">What we're doing</div>
+        <h2 class="h-section" style="margin-top: 18px;">Scope of Work</h2>
+
+        <div style="margin-top: 20px;">
+          <hr class="rule-dashed">
+          <div class="scope-block">
+            <div>
+              <div class="scope-num">01</div>
+              <div class="scope-kicker">Phase one</div>
+            </div>
+            <div>
+              <h3 class="scope-title">Research &amp; Information Gathering</h3>
+              <p class="body">Secondary research and competitive benchmarking across advertising clubs, industry associations, and community-driven membership websites. We map what works and what doesn't, to identify design directions, interaction patterns, and clear opportunities for differentiation.</p>
+              <span class="deliver-tag">You walk away with → A benchmarked design direction</span>
+            </div>
+          </div>
+
+          <hr class="rule-dashed">
+          <div class="scope-block">
+            <div>
+              <div class="scope-num">02</div>
+              <div class="scope-kicker">Phase two</div>
+            </div>
+            <div>
+              <h3 class="scope-title">Website Design</h3>
+              <p class="body">Visual direction, UI/UX design for all pages and flows, and a complete website style guide. Covers every page in the screen inventory, every logged-in and logged-out state, every flow from membership sign-up to event registration. Delivered as a complete, handoff-ready Figma file.</p>
+              <span class="deliver-tag">You walk away with → A handoff-ready Figma file + style guide</span>
+            </div>
+          </div>
+          <hr class="rule-dashed">
+        </div>
+      </div>
+
+      <hr class="rule-hair foot-rule">
+      <footer class="chrome">
+        <span>everything design</span>
+        <span>Scope of Work</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ============================================================ PAGE 4 — PAGES & FLOWS ============================================================ -->
+  <section class="sheet" data-screen-label="04 Pages and Flows">
+    <div class="frame">
+      <header class="chrome">
+        <div class="chrome-left">
+          <span>The Advertising Club Bangalore <strong>×</strong> Everything Design · Proposal</span>
+        </div>
+        <div class="chrome-right">04 / 06</div>
+      </header>
+      <hr class="rule-hair head-rule">
+
+      <div class="content">
+        <div class="eyebrow" style="margin-top: 26px;">Screen inventory</div>
+        <h2 class="h-section" style="margin-top: 16px;">Pages &amp; Flows</h2>
+        <p class="body muted" style="margin-top: 12px;">Every screen, every state, every flow — designed and delivered.</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 22px;">
+          <!-- PAGES -->
+          <div>
+            <div class="tbl-label">Pages <span class="count">9 screens</span></div>
+            <div class="inv-row pages">
+              <div class="inv-head">Page / Screen</div>
+              <div class="inv-head">Sections &amp; States</div>
+            </div>
+            <div class="inv-row pages">
+              <div class="inv-name">Homepage</div>
+              <div class="inv-detail">Hero, About, Events preview, Voices preview, Student Mentorship, WhatsApp Community, Memberships, Partners &amp; Logos, News</div>
+            </div>
+            <div class="inv-row pages">
+              <div class="inv-name">Events listing</div>
+              <div class="inv-detail">Card grid + filters</div>
+            </div>
+            <div class="inv-row pages">
+              <div class="inv-name">Event detail</div>
+              <div class="inv-detail">About, Schedule, Gallery, Videos tabs <span class="state">— Upcoming / Past states</span></div>
+            </div>
+            <div class="inv-row pages">
+              <div class="inv-name">Voices listing</div>
+              <div class="inv-detail">Article cards, Submit your voice CTA</div>
+            </div>
+            <div class="inv-row pages">
+              <div class="inv-name">Voice article</div>
+              <div class="inv-detail">Author info, Article body, Social share</div>
+            </div>
+            <div class="inv-row pages">
+              <div class="inv-name">Jobs</div>
+              <div class="inv-detail">Browse tab, Post a job tab, Seeker profile form <span class="state">— Logged out / Logged in</span></div>
+            </div>
+            <div class="inv-row pages">
+              <div class="inv-name">Resources library</div>
+              <div class="inv-detail">Search, Filter, Resource cards <span class="state">— Locked / Unlocked states</span></div>
+            </div>
+            <div class="inv-row pages">
+              <div class="inv-name">Agency listing</div>
+              <div class="inv-detail">Filter sidebar, Agency cards <span class="state">— Contact hidden / visible states</span></div>
+            </div>
+          </div>
+
+          <!-- FLOWS -->
+          <div>
+            <div class="tbl-label">Flows &amp; Overlays <span class="count">16 screens</span></div>
+            <div class="inv-row flows">
+              <div class="inv-head">Flow</div>
+              <div class="inv-head">Steps &amp; States</div>
+              <div class="inv-head" style="text-align: right;">Scr.</div>
+            </div>
+            <div class="inv-row flows">
+              <div class="inv-name">Auth</div>
+              <div class="inv-detail">Sign in form, Sign up form</div>
+              <div class="inv-count">2</div>
+            </div>
+            <div class="inv-row flows">
+              <div class="inv-name">Membership flow</div>
+              <div class="inv-detail">Step 1 — Select type <span class="state">(Student, Individual, Corporate)</span>, Step 2 — Details, Step 3 — Review &amp; payment, Step 4 — Confirmation + membership no.</div>
+              <div class="inv-count">6</div>
+            </div>
+            <div class="inv-row flows">
+              <div class="inv-name">Event registration</div>
+              <div class="inv-detail">Step 1 — Event detail + CTA, Step 2 — Member login, Step 3 — Registration form <span class="state">(Individual / Corporate / Non-member)</span>, Step 4 — Payment, Step 5 — Confirmation + QR passes</div>
+              <div class="inv-count">7</div>
+            </div>
+            <div class="inv-row flows">
+              <div class="inv-name">WhatsApp join form</div>
+              <div class="inv-detail">Name, Phone, Email, Company</div>
+              <div class="inv-count">1</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="rule-hair foot-rule">
+      <footer class="chrome">
+        <span>everything design</span>
+        <span>Pages &amp; Flows</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ============================================================ PAGE 5 — EXCLUSIONS ============================================================ -->
+  <section class="sheet" data-screen-label="05 Exclusions">
+    <div class="frame">
+      <header class="chrome">
+        <div class="chrome-left">
+          <span>The Advertising Club Bangalore <strong>×</strong> Everything Design · Proposal</span>
+        </div>
+        <div class="chrome-right">05 / 06</div>
+      </header>
+      <hr class="rule-hair head-rule">
+
+      <div class="content">
+        <div class="eyebrow" style="margin-top: 30px;">What's not included</div>
+        <h2 class="h-section" style="margin-top: 18px;">Exclusions</h2>
+
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+          <ol class="excl-list">
+            <li>
+              <span class="excl-num">01</span>
+              <span class="excl-text">Development, content writing, and 3D assets</span>
+            </li>
+            <li>
+              <span class="excl-num">02</span>
+              <span class="excl-text">Third-party stock images, shoots, videos, or any purchases — charged on actuals + 18% service charge</span>
+            </li>
+            <li>
+              <span class="excl-num">03</span>
+              <span class="excl-text">The mentioned cost excludes taxes and payment processing fees</span>
+            </li>
+          </ol>
+          <p class="excl-note">Any items outside the scope above will be scoped and quoted separately before work begins.</p>
+        </div>
+      </div>
+
+      <hr class="rule-hair foot-rule">
+      <footer class="chrome">
+        <span>everything design</span>
+        <span>Exclusions</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ============================================================ PAGE 6 — INVESTMENT & TIMELINE ============================================================ -->
+  <section class="sheet" data-screen-label="06 Investment and Timeline">
+    <div class="frame">
+      <header class="chrome">
+        <div class="chrome-left">
+          <span>The Advertising Club Bangalore <strong>×</strong> Everything Design · Proposal</span>
+        </div>
+        <div class="chrome-right">06 / 06</div>
+      </header>
+      <hr class="rule-hair head-rule">
+
+      <div class="content">
+        <div class="eyebrow" style="margin-top: 24px;">The commitment</div>
+        <h2 class="h-section" style="margin-top: 14px;">Investment &amp; Timeline</h2>
+
+        <div class="sign-card" style="margin-top: 22px;">
+          <div class="sign-row">
+            <div>
+              <div class="sign-kicker">Website Design</div>
+              <div class="sign-value">₹ 3,50,000</div>
+              <p class="sign-sub">+ GST, payable in full upon signing</p>
+            </div>
+            <div>
+              <div class="sign-kicker">Timeline</div>
+              <div class="sign-value sm">4–5 weeks</div>
+              <p class="sign-sub">From project kickoff</p>
+            </div>
+          </div>
+          <p class="sign-note">Design only. Development, content, and third-party costs are not included.</p>
+        </div>
+
+        <div style="flex: 1;"></div>
+
+        <div class="contact-strip">
+          <div>
+            <div class="meta-label">Project lead</div>
+            <div class="meta-value">Everything Design<span class="meta-sub">Strategy &amp; Brand</span></div>
+          </div>
+          <div>
+            <div class="meta-label">Reply to</div>
+            <div class="meta-value">hello@everything.design<span class="meta-sub">+91 8547 807 934</span></div>
+          </div>
+          <div>
+            <div class="meta-label">Studio</div>
+            <div class="meta-value">Bengaluru, Karnataka<span class="meta-sub">www.everything.design</span></div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="rule-hair foot-rule">
+      <footer class="chrome">
+        <span>everything design</span>
+        <span>Investment &amp; Timeline</span>
+      </footer>
+    </div>
+  </section>
+
+</div>
+<script>
+addEventListener('load', () => {
+  (async () => {
+    try { await document.fonts.ready; } catch (e) {}
+    const imgs = Array.from(document.images).filter((i) => !i.complete);
+    await Promise.race([
+      Promise.allSettled(imgs.map((i) => i.decode())),
+      new Promise((r) => setTimeout(r, 8000)),
+    ]);
+    setTimeout(() => window.print(), 500);
+  })();
+});
+</script>
+</body>
+</html>
